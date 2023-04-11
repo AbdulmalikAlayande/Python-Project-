@@ -19,13 +19,16 @@ class Menu:
         main_menu = """
         1 --> Convert Celcius to fahrenheit
         2 --> Convert Celcius to Kelvin
-        3 --> Convert Fahrenheit to Celcius
-        4 --> Convert Fahrenheit to Kelvin
-        5 --> Convert Kelvin to Fahrenheit
-        6 --> Convert Kelvin to Celcius
-        7 --> View recent conversions
-        8 --> View all conversions
-        9 --> Exit
+        3 --> Convert Celcius to rankine
+        4 --> Convert Celcius to raemur
+        5 --> Convert Celcius to newton
+        6 --> Convert Fahrenheit to Celcius
+        7 --> Convert Fahrenheit to Kelvin
+        8 --> Convert Kelvin to Fahrenheit
+        9 --> Convert Kelvin to Celcius
+        10--> View recent conversions
+        11 --> View all conversions
+        12 --> Exit
         """
 
         Dialog.abdulmalik_message_display(main_menu)
@@ -37,18 +40,24 @@ class Menu:
                 case '2':
                     self.convert_celcius_to_kelvin()
                 case '3':
-                    self.convert_fahrenheit_to_celcius()
+                    self.convert_celcius_to_rankine()
                 case '4':
-                    self.convert_fahrenheit_to_kelvin()
+                    self.convert_celcius_to_raemur()
                 case '5':
-                    self.convert_kelvin_to_fahrenheit()
+                    self.convert_celcius_to_newton()
                 case '6':
-                    self.convert_kelvin_to_celcius()
+                    self.convert_fahrenheit_to_celcius()
                 case '7':
-                    self.view_recent_conversions()
+                    self.convert_fahrenheit_to_kelvin()
                 case '8':
-                    self.view_all_conversions()
+                    self.convert_kelvin_to_fahrenheit()
                 case '9':
+                    self.convert_kelvin_to_celcius()
+                case '10':
+                    self.view_recent_conversions()
+                case '11':
+                    self.view_all_conversions()
+                case '12':
                     sys.exit(0)
                 case _:
                     self.main_menu()
@@ -56,8 +65,8 @@ class Menu:
     def convert_celcius_to_fahrenheit(self):
         celcius_value, ok_pressed = QInputDialog.getInt(None, "Temperature Converter", "Enter the celcius value")
         if ok_pressed & isinstance(celcius_value, int):
-            kelvin_value = self.temperature.convert_celcius_to_fahrenheit(celcius_value)
-            Dialog.abdulmalik_message_display(str(kelvin_value))
+            fahrenheit_value = self.temperature.convert_celcius_to_fahrenheit(celcius_value)
+            Dialog.abdulmalik_message_display(str(fahrenheit_value))
             self.main_menu()
 
     def convert_celcius_to_kelvin(self):
@@ -65,6 +74,27 @@ class Menu:
         if ok_pressed & isinstance(celcius_value, int):
             kelvin_value = self.temperature.convert_celcius_to_kelvin(celcius_value)
             Dialog.abdulmalik_message_display(str(kelvin_value))
+            self.main_menu()
+
+    def convert_celcius_to_rankine(self):
+        celcius_value, ok_pressed = Dialog.abdulmalik_input_int("Temperature Converter", "Enter the celcius value", 0, -2147483647, 2147483647, 1)
+        if ok_pressed & isinstance(celcius_value, int):
+            rankine_value = self.temperature.convert_celcius_to_rankine(celcius_value)
+            Dialog.abdulmalik_message_display(str(rankine_value))
+            self.main_menu()
+
+    def convert_celcius_to_raemur(self):
+        celcius_value, ok_pressed = Dialog.abdulmalik_input_int("Temperature Converter", "Enter the celcius value", 0, -2147483647, 2147483647, 1)
+        if ok_pressed & isinstance(celcius_value, int):
+            raemur_value = self.temperature.convert_celcius_to_raemur(celcius_value)
+            Dialog.abdulmalik_message_display(str(raemur_value))
+            self.main_menu()
+
+    def convert_celcius_to_newton(self):
+        celcius_value, ok_pressed = Dialog.abdulmalik_input_int("Temperature Converter", "Enter the celcius value", 0, -2147483647, 2147483647, 1)
+        if ok_pressed & isinstance(celcius_value, int):
+            newton_value = self.temperature.convert_celcius_to_newton(celcius_value)
+            Dialog.abdulmalik_message_display(str(newton_value))
             self.main_menu()
 
     # , "OK", "Cancel"
